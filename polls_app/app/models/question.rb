@@ -43,6 +43,13 @@ class Question < ApplicationRecord
   # end
 
   def results
-    
+    results = 
+      SELECT 
+        answer_choices.*, COUNT(answer_choices.responses)
+      FROM
+        answer_choices
+      JOIN
+        questions ON answer_choices.question_id = questions.id
+      
   end
 end
